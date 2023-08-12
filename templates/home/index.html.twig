@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+<style>
+
+body {
+    background-image: url('https://www.musicandwanderlust.com/wp-content/uploads/2021/09/melissa-askew-AUXanrckXn0-unsplash-scaled.jpg'); /* Replace the path with the actual URL or file path of your image */
+    background-size: cover; /* Ensure the image covers the whole background */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center center; /* Center the image horizontally and vertically */
+    color: white; /* Text color on top of the image */
+    
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+/* Centrer le contenu */
+.cover-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center; /* Centrer le texte dans le conteneur */
+}
+
+/* Styles pour le titre */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  max-width: 600px; /* Largeur maximale pour le titre */
+  line-height: 1.3; /* Espacement entre les lignes du titre */
+  color:white;
+}
+
+/* Styles pour le texte principal */
+.lead {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 600px; /* Largeur maximale pour le texte principal */
+  line-height: 1.6; /* Espacement entre les lignes du texte principal */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.969); /* Adjust the values to control the shadow effect */
+
+}
+
+/* Styles pour le bouton */
+.btn-secondary {
+  color: white; /* Texte blanc */
+  background-color: black; /* Fond noir */
+  border-color: white; /* Bordure blanche */
+}
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+  <div class="cover-container">
+    <main class="px-3">
+      <h1>Explorez, Vibrez, Profitez !</h1>
+      <p class="lead">Notre site vous guide vers des expériences inoubliables, vous connectant aux moments les plus vibrants de la planète.</p>
+      <p class="lead">
+        <a href="{{ path('app_event')}}" class="btn btn-lg btn-secondary fw-bold border-white">Trouve ton Event</a>
+      </p>
+    </main>
+
+  
+  </div>
+{% endblock %}

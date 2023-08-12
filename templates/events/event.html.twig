@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Événement - {{ event.title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9; /* Couleur de fond */
+        }
+
+        .event-card {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-photo {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .event-details {
+            padding: 20px;
+        }
+
+        .event-title {
+            color: #007bff;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .event-description {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .event-date {
+            font-size: 1.1rem;
+            text-align: center;
+            color: #888;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="event-card">
+                {% if event %}
+                    {% if event.photo %}
+                        <img src="{{ asset('uploads/photos/' ~ event.photo) }}" alt="{{ event.title }}" class="event-photo">
+                    {% else %}
+                        <p class="text-center">Pas de photo disponible</p>
+                    {% endif %}
+                    <div class="event-details">
+                        <h1 class="event-title">{{ event.title }}</h1>
+                        <p class="event-description">{{ event.description }}</p>
+                        <p class="event-date"><strong>Date :</strong> {{ event.date|date('Y-m-d')}}</p>
+                    </div>
+                {% else %}
+                    <p class="text-center">L'événement n'a pas pu être trouvé.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

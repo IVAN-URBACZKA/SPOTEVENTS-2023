@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Upcoming Events{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .event-item {
+            margin-bottom: 2rem;
+            border: 1px solid #e5e5e5;
+            border-radius: 0.25rem;
+            overflow: hidden;
+        }
+
+        .event-photo {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-details {
+            padding: 1rem;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-date {
+            font-size: 1.2rem;
+            color: #999;
+        }
+
+        .event-description {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            /* Limit the description to 200 characters and add ellipsis */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* Number of lines to show */
+            -webkit-box-orient: vertical;
+        }
+
+        .event-organizer {
+            font-size: 1.2rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .ellipsis::after {
+            content: "...";
+            display: inline;
+        }
+
+        /* Styles pour le dropdown et le bouton */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .filter-label {
+            margin-right: 1rem;
+        }
+
+        .btn-filter {
+            min-width: 150px;
+        }
+
+        /* Styles pour la mise en page responsive */
+        @media (max-width: 767px) {
+            .col-md-4 {
+                flex-basis: 50%;
+                max-width: 50%;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <form method="get">
+                <div class="filter-container">
+                    <label class="filter-label" for="filter">Trier par date :</label>
+                    <select name="filter" id="filter" class="form-control">
+                        <option value="newest" {% if filter == 'newest' %}selected{% endif %}>Du plus récent au moins récent</option>
+                        <option value="oldest" {% if filter == 'oldest' %}selected{% endif %}>Du moins récent au plus récent</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary btn-filter">Filtrer</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for event in events %}
+              <div class="col-md-4">
+                <div class="event-item">
+                  {% if event.photo %}
+                    <img src="{{ asset('uploads/photos/' ~ event.photo) }}" alt="{{ event.title }}" class="event-photo">
+                  {% else %}
+                    <p class="text-center">Pas de photo disponible</p>
+                  {% endif %}
+                  <div class="event-details">
+                    <h2 class="event-title">{{ event.title }}</h2>
+                    <em>{{ event.city }}</em>
+                    <p class="event-date">{{ event.date|date('Y-m-d') }}</p>
+                    <p class="event-description ellipsis">{{ event.description|slice(0, 40) }}</p>
+                    <p class="event-organizer">Organisé par : {{ event.organizer }}</p>
+                    <a href="{{ path('single_event', {'id': event.id}) }}" class="event-link">En savoir plus</a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+    </div>
+{% endblock %}

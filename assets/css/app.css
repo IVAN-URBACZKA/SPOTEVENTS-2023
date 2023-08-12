@@ -1,0 +1,93 @@
+
+
+/* Ajoutez vos styles personnalisés ici */
+
+body {
+  background-color: black; /* Fond noir */
+  color: white; /* Texte blanc */
+}
+
+.navbar {
+  background-color: black; /* Couleur de fond noir pour la barre de navigation */
+  padding: 10px 0; /* Ajoutez un espace de 10px en haut et en bas pour un meilleur aspect */
+}
+
+/* Ajouter ce code CSS dans votre fichier CSS ou entre les balises <style>...</style> dans votre template */
+.navbar .nav-link {
+  color: white; /* Couleur du texte des liens */
+  text-decoration: none; /* Supprimer le soulignement des liens par défaut */
+  position: relative; /* Permet de positionner l'élément "after" */
+}
+
+.navbar .nav-link::after {
+  content: ""; /* Ajoute un contenu (dans ce cas, un trait) à l'élément "after" */
+  position: absolute; /* Permet de positionner l'élément "after" par rapport à son parent */
+  left: 0; /* Position du trait au début du lien */
+  bottom: -2px; /* Distance du trait par rapport au bas du lien */
+  width: 100%; /* Longueur du trait (100% de la largeur du lien) */
+  height: 2px; /* Épaisseur du trait */
+  background-color: white; /* Couleur du trait */
+  visibility: hidden; /* Le trait est caché par défaut */
+  transform: scaleX(0); /* Échelle horizontale à 0 pour le cacher */
+  transition: visibility 0s, transform 0.3s ease-in-out; /* Transition fluide pour afficher le trait en douceur */
+}
+
+.navbar .nav-link:hover::after {
+  visibility: visible; /* Rendre le trait visible au survol du lien */
+  transform: scaleX(1); /* Mettre l'échelle horizontale à 1 pour afficher le trait */
+}
+
+
+.event-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.event-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.event-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.event-details {
+  margin-top: 15px;
+}
+
+.event-date {
+  font-style: italic;
+  color: #888;
+}
+
+.event-description {
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.event-organizer {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+.event-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.event-link:hover {
+  text-decoration: underline;
+}
