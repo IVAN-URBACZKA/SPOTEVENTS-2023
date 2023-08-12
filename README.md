@@ -7,7 +7,7 @@ Le site Spotevent a été développé en utilisant les technologies suivantes :
 - **Twig**: Moteur de template favorisant des vues bien structurées et lisibles.
 - **PHPUnit**: Framework de tests unitaires pour garantir la qualité du code.
 
-![Image d'exemple](https://www.zupimages.net/up/23/32/reif.png)
+![Image d'exemple](https://i.goopics.net/2owj54.png)
 
 ## Caractéristiques Principales :
 
