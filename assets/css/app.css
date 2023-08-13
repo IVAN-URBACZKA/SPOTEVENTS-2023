@@ -1,42 +1,104 @@
-
-
-/* Ajoutez vos styles personnalisés ici */
-
 body {
-  background-color: black; /* Fond noir */
-  color: white; /* Texte blanc */
+  background-color: black;
+  color: white;
 }
 
 .navbar {
-  background-color: black; /* Couleur de fond noir pour la barre de navigation */
-  padding: 10px 0; /* Ajoutez un espace de 10px en haut et en bas pour un meilleur aspect */
+  background-color: black;
+  padding: 10px 0;
 }
 
-/* Ajouter ce code CSS dans votre fichier CSS ou entre les balises <style>...</style> dans votre template */
 .navbar .nav-link {
-  color: white; /* Couleur du texte des liens */
-  text-decoration: none; /* Supprimer le soulignement des liens par défaut */
-  position: relative; /* Permet de positionner l'élément "after" */
+  color: white;
+  text-decoration: none;
+  position: relative;
 }
 
 .navbar .nav-link::after {
-  content: ""; /* Ajoute un contenu (dans ce cas, un trait) à l'élément "after" */
-  position: absolute; /* Permet de positionner l'élément "after" par rapport à son parent */
-  left: 0; /* Position du trait au début du lien */
-  bottom: -2px; /* Distance du trait par rapport au bas du lien */
-  width: 100%; /* Longueur du trait (100% de la largeur du lien) */
-  height: 2px; /* Épaisseur du trait */
-  background-color: white; /* Couleur du trait */
-  visibility: hidden; /* Le trait est caché par défaut */
-  transform: scaleX(0); /* Échelle horizontale à 0 pour le cacher */
-  transition: visibility 0s, transform 0.3s ease-in-out; /* Transition fluide pour afficher le trait en douceur */
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: visibility 0s, transform 0.3s ease-in-out;
 }
 
 .navbar .nav-link:hover::after {
-  visibility: visible; /* Rendre le trait visible au survol du lien */
-  transform: scaleX(1); /* Mettre l'échelle horizontale à 1 pour afficher le trait */
+  visibility: visible;
+  transform: scaleX(1);
 }
 
+.navbar a.nav-link {
+  color: white;
+  transition: color 0.3s;
+}
+
+.navbar a.nav-link:hover {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.navbar a.nav-link, 
+.navbar .btn-outline-light {
+  color: white;
+  transition: color 0.3s;
+}
+
+.navbar a.nav-link:hover, 
+.navbar .btn-outline-light:hover {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.navbar .btn-outline-light.nav-link:hover {
+  color: white;
+}
+
+.navbar .nav-link,
+.navbar .btn-conn {
+  color: white;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: visibility 0s, transform 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.navbar .nav-link:hover,
+.navbar .btn-conn:hover {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.navbar .btn-conn {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.navbar .btn-conn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
 
 .event-item {
   border: 1px solid #ccc;
