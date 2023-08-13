@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ArticleRepository;
+use App\Entity\Article;
 
 
 class AdminEventController extends AbstractController
@@ -33,5 +35,29 @@ class AdminEventController extends AbstractController
         $this->addFlash('success', 'Event has been deleted.');
 
         return $this->redirectToRoute('admin_events');
+    }
+
+
+
+    #[Route('/admin/articles', name: 'admin_articles')]
+    public function articles(ArticleRepository $articleRepository)
+    {
+        $articles = $articleRepository->findAll();
+
+        return $this->render('admin_event/articles.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
+
+
+    #[Route('/admin/article/{id}/delete', name: 'admin_article_delete')]
+    public function deleteArticle(Article $article, EntityManagerInterface $manager)
+    {
+        $manager->remove($article);
+        $manager->flush();
+
+        $this->addFlash('success', 'Article deleted successfully.');
+
+        return $this->redirectToRoute('admin_articles');
     }
 }
