@@ -132,6 +132,12 @@
                     <p class="event-description ellipsis">{{ event.description|slice(0, 40) }}</p>
                     <p class="event-organizer">Organisé par : {{ event.organizer }}</p>
                     <a href="{{ path('single_event', {'id': event.id}) }}" class="event-link">En savoir plus</a>
+                    <button
+                    class="favorite-btn {% if event.isFavorite %}favorite{% else %}not-favorite{% endif %}"
+                    data-event-id="{{ event.id }}"
+                >
+                    <i class="bi {% if event.isFavorite %}bi-heart-fill{% else %}bi-heart{% endif %}"></i>
+                </button>
                   </div>
                 </div>
               </div>

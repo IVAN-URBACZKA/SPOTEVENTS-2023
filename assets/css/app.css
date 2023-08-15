@@ -153,3 +153,8 @@ body {
 .event-link:hover {
   text-decoration: underline;
 }
+
+
+.red-color {
+  color:red;
+}
