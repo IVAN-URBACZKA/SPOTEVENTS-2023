@@ -24,13 +24,14 @@ class FavoriteController extends AbstractController
         $event = $eventRepository->find($id);
 
         if (!$event) {
-            return new JsonResponse(['success' => false, 'message' => 'Événement non trouvé.'], Response::HTTP_NOT_FOUND);
+            return new JsonResponse(['success' => 0, 'message' => 'Événement non trouvé.'], Response::HTTP_NOT_FOUND);
         }
 
         // Mettre à jour l'état de favori de l'événement
         $event->setIsFavorite($status);
+        
         $entityManager->flush();
 
-        return new JsonResponse(['success' => true, 'message' => 'État de favori mis à jour.']);
+        return new JsonResponse(['success' => 1, 'message' => 'État de favori mis à jour.']);
     }
 }
